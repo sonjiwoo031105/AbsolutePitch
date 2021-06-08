@@ -1,10 +1,5 @@
-﻿  test.c
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(9,8): warning C4013: 'srand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(9,27): warning C4013: 'time'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(10,21): warning C4013: 'rand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(21,21): warning C4013: 'strstr'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(26,67): warning C4047: '=': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(30,14): warning C4013: 'strcmp'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(40,2): warning C4098: 'main': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Absolute_pitch\test.c(21,1): warning C4047: '초기화 중': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-  Absolute_pitch.vcxproj -> C:\Users\jiji4\Project\CPU\절대음감\Absolute_pitch\Debug\Absolute_pitch.exe
+﻿  절대음감테스트.c
+C:\Users\jiji4\Project\AbsolutePitch\Absolute_pitch\절대음감테스트.c(134,25): warning C4244: '함수': 'double'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jiji4\Project\AbsolutePitch\Absolute_pitch\절대음감테스트.c(205,4): warning C4098: 'main': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\jiji4\Project\AbsolutePitch\Absolute_pitch\절대음감테스트.c(216,2): warning C4098: 'main': 'void' 함수에서 값을 반환하고 있습니다.
+  Absolute_pitch.vcxproj -> C:\Users\jiji4\Project\AbsolutePitch\Debug\Absolute_pitch.exe
