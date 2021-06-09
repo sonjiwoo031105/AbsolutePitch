@@ -1,19 +1,27 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <conio.h>
 #include <stdio.h>
+#include <conio.h>
 #include <time.h>
 #include <windows.h>
 
-#define SIZE 7
+
+#define SIZE 8
 
 // _getch() value of ESC key
 #define ESC 27
 #define UP 72
 #define DOWN 80
 #define SUBMIT 4
+#define ENTER 13
 
 /* 함수 선언 */
 int keyControl();
+int menuDraw();
+void print_piano();
+int pr_str_array(char** dp, int n);
+int playGame();
+void rule();
+
 
 void gotoxy(int x, int y) {
 	COORD pos = { x, y };
@@ -28,6 +36,12 @@ int get_key(void) {
 	}
 	return 1;
 }
+
+void textcolor(int color_number)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color_number);
+}
+
 
 int keyControl() {
 	char temp;
@@ -45,8 +59,8 @@ int keyControl() {
 					break;
 				}
 			}
-			if (temp == ' ') {
-				return SUBMIT;
+			else if (temp == 13) {
+				return ENTER;
 			}
 		}
 		return 0;
@@ -89,7 +103,7 @@ int menuDraw() {
 			}
 			break;
 		}
-		case SUBMIT: {
+		case ENTER: {
 			return y - 13;
 		}
 		}
@@ -120,13 +134,14 @@ void print_piano() {
 
 int pr_str_array(char** dp, int n) {
 	while (1) {
-		double frequency[] = { 523.2511, 587.3295, 659.2551, 698.456, 783.9909, 880, 987.7666 };
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | (0 << 4));
+		double frequency[] = { 523.2511, 587.3295, 659.2551, 698.456, 783.9909, 880, 987.7666, 1046.502 };
 		const int note_len = 600;
 
 		srand((unsigned int)time(NULL));
-		int random = (rand() % 7);
+		int random = (rand() % 8);
 
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 8; i++) {
 			if (random == i + 1) {
 				Sleep(200);
 			}
@@ -145,14 +160,14 @@ int pr_str_array(char** dp, int n) {
 		scanf("%s", answer);
 
 		if (!strcmp(answer, *(dp + random))) {
-			gotoxy(76, 9);
+			gotoxy(75, 9);
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | (0 << 4));
 			printf("정답입니다!\n");
 		}
 		else {
 			gotoxy(67, 9);
 			printf("땡! 정답은 %s입니다.\n", *(dp + random));
-			gotoxy(82, 28);
+			gotoxy(82, 29);
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12 | (0 << 4));
 			printf("3초 후에 메인화면으로 돌아갑니다...");
 			Sleep(3000);
@@ -164,11 +179,11 @@ int pr_str_array(char** dp, int n) {
 }
 
 int playGame() {
-	char* p[SIZE] = { "도", "레", "미", "파", "솔" , "라", "시" };
+	char* p[SIZE] = { "도", "레", "미", "파", "솔" , "라", "시", "도" };
 	while (1) {
 		int n = keyControl();
 		switch (n) {
-		case SUBMIT: {
+		case ENTER: {
 			return pr_str_array(p, SIZE);
 		}
 		}
@@ -177,17 +192,31 @@ int playGame() {
 }
 void rule() {
 	system("cls");
-	gotoxy(26, 14);
-	printf("게임 시작 전 한글로 설정되어 있는지 확인해주세요.");
-	gotoxy(75, 29);
-	printf("게임을 시작하려면 스페이스바를 누르세요...");
+	double frequency[] = { 523.2511, 587.3295, 659.2551, 698.456, 783.9909, 880, 987.7666, 1046.502 };
+
+	gotoxy(45, 13);
+	printf("들리는 음을 듣고 맞춰보세요!");
+	gotoxy(34, 15);
+	printf("게임 시작 전 한글로 설정되어 있는지 확인해주세요:)");
+	gotoxy(27, 17);
+	printf("정답을 쓴 후 뭐라고 썼는지 모르겠으면 오른쪽 화살표를 눌러보세요~");
+
+	for (int i = 0; i < sizeof(frequency) / sizeof(double); i++) {
+		Beep(frequency[i], 200);
+	}
+	for (int helper = 0; helper <= 15; helper++) {
+		gotoxy(81, 29);
+		textcolor(helper);
+		printf("게임을 시작하려면 엔터를 누르세요...");
+		Sleep(100);
+	}
 	playGame();
 }
 
-void main(void) {
+void main() {
 	system("cls");
 
-	char* p[SIZE] = { "도", "레", "미", "파", "솔" , "라", "시" };
+	char* p[SIZE] = { "도", "레", "미", "파", "솔" , "라", "시", "도"};
 	int x = 100, y = 20;
 	char key;
 
