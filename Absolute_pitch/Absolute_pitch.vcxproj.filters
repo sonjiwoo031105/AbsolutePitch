@@ -21,5 +21,16 @@
     <ClCompile Include="절대음감테스트.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="modules.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="guess_note.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="modules.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
