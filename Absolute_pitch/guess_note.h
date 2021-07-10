@@ -6,4 +6,4 @@
 #include "modules.h"
 
 #define SIZE 10
-void guess_note(void);
+void main(void);
